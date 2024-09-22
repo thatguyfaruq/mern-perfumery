@@ -77,9 +77,15 @@ nav h1 {
   background-color: #ffffff;
   width: 100%;
   max-width: 642px;
-  padding: 3rem 5rem;
+  height: 500px;
+  padding: 2rem 3rem;
   border-radius: 15px;
-  margin-top: 123px;
-  margin-left: 320px;
+  /* margin-top: 123px;
+  margin-left: 399px; */
 }
 
+.form-container h2{
+  font-family: neurial-grotesk;
+  font-size: 28px;
+  font-weight: 700;
+}
