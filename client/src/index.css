@@ -84,8 +84,72 @@ nav h1 {
   margin-left: 399px; */
 }
 
-.form-container h2{
+.form-container h2 {
   font-family: neurial-grotesk;
   font-size: 28px;
   font-weight: 700;
+}
+
+.form-container mb-3 {
+  color: #181a20d1;
+  font-weight: 500;
+  font-size: 26px;
+  font-family: neurial-grotesk;
+}
+.forgot {
+  color: #ec5e5e;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: neurial-grotesk;
+}
+
+.sign-in {
+  background-color: #8d34ff;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 500;
+  border-radius: 15px;
+  padding: 7px 10px 7px 10px;
+  gap: 14px;
+}
+
+.sign-in:hover {
+  cursor: pointer;
+  background-color: #8d34ff;
+  color: #ffffff;
+}
+
+.btn-2 {
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+  /* gap: 10px; */
+  border: 1px solid #000000;
+}
+
+.link {
+  text-decoration: none;
+  color: #8d34ff;
+}
+
+.sign-up-container {
+  background-image: url(./assets/background-image.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-height: 100vh;
+}
+
+.form-container-2 {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 642px;
+  padding: 49px 80px 49px 80px;
+  border-radius: 15px;
+  margin-top: 52.55px;
+  margin-left: 400px;
+}
+
+.form-container-2 h2{
+  font-size: 28px;
+  font-weight: 700;
+  font-family: neurial-grotesk;
 }
