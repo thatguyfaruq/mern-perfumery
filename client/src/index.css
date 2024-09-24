@@ -90,6 +90,12 @@ nav h1 {
   font-weight: 700;
 }
 
+..form-container p{
+  font-size: 16px;
+  font-weight: 400;
+  font-family: neurial-grotesk;
+}
+
 .form-container mb-3 {
   color: #181a20d1;
   font-weight: 500;
@@ -142,14 +148,51 @@ nav h1 {
   background-color: #ffffff;
   width: 100%;
   max-width: 642px;
-  padding: 49px 80px 49px 80px;
+  /* height: 500px; */
+  padding: 2rem 3rem;
   border-radius: 15px;
-  margin-top: 52.55px;
-  margin-left: 400px;
+  /* margin-top: 52.55px; */
+ margin-bottom: 100px;
 }
 
-.form-container-2 h2{
+.form-container-2 h2 {
   font-size: 28px;
   font-weight: 700;
   font-family: neurial-grotesk;
 }
+
+.form-container-2 h2 {
+  font-family: neurial-grotesk;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.form-container-2 p{
+  font-size: 16px;
+  font-weight: 400;
+  font-family: neurial-grotesk;
+}
+
+.form-container-2 mb-3 {
+  color: #181a20d1;
+  font-weight: 500;
+  font-size: 26px;
+  font-family: neurial-grotesk;
+}
+
+.sign-up {
+  background-color: #8d34ff;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 500;
+  border-radius: 15px;
+  padding: 7px 10px 7px 10px;
+  gap: 14px;
+}
+
+.sign-up:hover {
+  cursor: pointer;
+  background-color: #8d34ff;
+  color: #ffffff;
+}
+
