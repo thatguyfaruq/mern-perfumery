@@ -4,11 +4,25 @@ import { Link } from "react-router-dom";
 import FrameImg from "../assets/frame.png";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signUpSchema } from "../utils/ValidationSchema";
+
 
 const SignUp = () => {
   const navigateToGoogle = () => {
     window.open("https://www.google.com", "_blank");
   };
+const {
+  register,
+  handleSubmit,
+  formState: { errors },
+} = useForm({
+  resolver: yupResolver(signUpSchema),
+});
+  const onSubmit = (data) => console.log(data);
+
+
   return (
     <main className="sign-up-container">
       <nav>
@@ -19,13 +33,18 @@ const SignUp = () => {
       </nav>
       <section className="d-flex h-100 align-items-center justify-content-center">
         <div className="form-container-2">
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <h2>Get Started</h2>
             <p>Lets get started by filling out the information below</p>
             <div className="d-flex justify-content-between">
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>First Name</Form.Label>
-                <Form.Control type="first name" placeholder="Enter Name" />
+                <Form.Control
+                  type="first name"
+                  placeholder="Enter Name"
+                  {...register("firstName")}
+                />
+                <p>{errors.firstName?.message}</p>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Last Name</Form.Label>
@@ -35,18 +54,33 @@ const SignUp = () => {
             <div>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  {...register("email")}
+                />
+                <p>{errors.email?.message}</p>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  {...register("password")}
+                />
+                <p>{errors.password?.message}</p>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Confirm Password</Form.Label>
-                <Form.Control type="password" placeholder="Confirm your Password" />
+                <Form.Control
+                  type="password"
+                  placeholder="Confirm your Password"
+                  {...register("confirmPwd")}
+                />
+                <span className="text-danger">{errors.confirmPwd?.message}</span>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check 
+                <Form.Check
                   type="checkbox"
                   label="I agree to Terms of Service and Privacy Policies"
                 />
@@ -92,7 +126,7 @@ const SignUp = () => {
             <p className="text-center">
               Already have an account?
               <Link className="link" to="/auth/Login">
-                Sign In
+                Log In
               </Link>
             </p>
           </form>

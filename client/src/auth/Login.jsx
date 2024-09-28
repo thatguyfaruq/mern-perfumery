@@ -4,12 +4,26 @@ import FrameImg from "../assets/frame.png";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from 'react-router-dom';
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signInSchema } from "../utils/ValidationSchema";
+
 
 
 const Login = () => {
   const navigateToGoogle = () => {
     window.open("https://www.google.com", "_blank");
   };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(signInSchema),
+  });
+  const onSubmit = (data) => console.log(data);
+
   return (
     <>
       <main className="sign-in-container">
@@ -22,16 +36,26 @@ const Login = () => {
 
         <section className="d-flex flex-column justify-content-center align-items-center">
           <div className="form-container">
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <h2>Welcome Back</h2>
               <p>Fill in your information to access your account.</p>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter your Email" />
+                <Form.Control
+                  type="email"
+                  placeholder="Enter your Email"
+                  {...register("email")}
+                />
+                <span className="text-danger">{errors.email?.message}</span>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Enter your password" />
+                <Form.Control
+                  type="password"
+                  placeholder="Enter your password"
+                  {...register("email")}
+                />
+                <span className="text-danger">{errors.email?.message}</span>
               </Form.Group>
               <div className="d-flex justify-content-between">
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -39,10 +63,10 @@ const Login = () => {
                 </Form.Group>
                 <p className="forgot">Forgot Password</p>
               </div>
-              <button className="sign-in w-100" variant="">
+              <button className="sign-in w-100 gap-4" variant="">
                 Sign In
               </button>
-              <div className="d-flex justify-content-center">
+              <div className="d-flex justify-content-center gap-3">
                 <img src={FrameImg} alt="frame-img" />
               </div>
               <div className="d-flex gap-5">

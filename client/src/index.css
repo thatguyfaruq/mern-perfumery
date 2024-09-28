@@ -2,6 +2,8 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @font-face {
   font-family: neurial-grotesk;
   src: url("./assets/fonts/Fontspring-DEMO-neurialgrotesk-regular.otf");
@@ -13,6 +15,7 @@
   --off-white: #f5f5f5;
   --login-bgrc: rgba(230, 210, 255, 1);
   --ff-outfit: "Outfit", sans-serif;
+  --ff-poppins: "Poppins", sans-serif;
 }
 
 /* nav */
@@ -90,7 +93,7 @@ nav h1 {
   font-weight: 700;
 }
 
-..form-container p{
+..form-container p {
   font-size: 16px;
   font-weight: 400;
   font-family: neurial-grotesk;
@@ -152,7 +155,7 @@ nav h1 {
   padding: 2rem 3rem;
   border-radius: 15px;
   /* margin-top: 52.55px; */
- margin-bottom: 100px;
+  margin-bottom: 100px;
 }
 
 .form-container-2 h2 {
@@ -167,7 +170,7 @@ nav h1 {
   font-weight: 700;
 }
 
-.form-container-2 p{
+.form-container-2 p {
   font-size: 16px;
   font-weight: 400;
   font-family: neurial-grotesk;
@@ -195,4 +198,76 @@ nav h1 {
   background-color: #8d34ff;
   color: #ffffff;
 }
+
+/* card */
+.card-container {
+  width: 30%;
+}
+
+.card-img {
+  height: 256.62px;
+  width: 256.62px;
+}
+
+.card-title {
+  font-family: neurial-grotesk;
+  font-size: 15.97px;
+  font-weight: 700;
+}
+
+.add-to-card-btn {
+  background-color: var(--purple);
+  color: #fefeff;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--ff-poppins);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-price{
+  font-size: 15.97px;
+  font-weight: 700;
+  color: var(--purple);
+}
+
+.card-discount-price{
+  color: #A2A2A2;
+  font-size: 15.97px;
+  font-weight: 500;
+}
+
+
+
+@media (max-width: 465px){
+ 
+  /* card */
+.card-container {
+  width: 100%;
+}
+
+.card-img {
+  height: 335.55px;
+  width: 335.55px;
+}
+
+.card-title {
+  font-size: 20px;
+}
+}
+
+@media (min-width: 768px) and (max-width: 1023px){
+.card-container{
+  min-width: 48%;
+  display: flex;
+  justify-content: space-around;
+
+}
+.card-img{
+  height: 335.55px;
+  width: 335.55px;
+}
+}
+
 
