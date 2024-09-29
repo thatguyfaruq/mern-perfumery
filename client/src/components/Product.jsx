@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import ratingImg from "/src/assets/star.png";
+import ratingImg from "/src/assets/Star.png";
 import products from "../product.json";
 
 const Product = () => {
