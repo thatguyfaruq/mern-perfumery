@@ -53,9 +53,9 @@ const Login = () => {
                 <Form.Control
                   type="password"
                   placeholder="Enter your password"
-                  {...register("email")}
+                  {...register("password")}
                 />
-                <span className="text-danger">{errors.email?.message}</span>
+                <span className="text-danger">{errors.password?.message}</span>
               </Form.Group>
               <div className="d-flex justify-content-between">
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
