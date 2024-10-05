@@ -64,9 +64,9 @@ const Cart = ({ cart, removeItem, calcTotalPrice }) => {
           </div>
         )}
 
-        <button className="w-100 checkout-button" onClick={() => setModalShow(true)}>
+        {/* <button className="w-100 checkout-button" onClick={() => setModalShow(true)}>
           Confirm Order{" "}
-        </button>
+        </button> */}
       </main>
     </>
   );
