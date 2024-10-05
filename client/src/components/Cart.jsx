@@ -45,21 +45,25 @@ const Cart = ({ cart, removeItem, calcTotalPrice }) => {
             </div>
           );
         })}
-        {}
-        <div className="checkout-container">
-          <div className="checkout">
-            <p className="checkout-title">Sub Total</p>
-            <p className="checkout-price">18,000</p>
+        {cart.length === 0 ? (
+          ""
+        ) : (
+          <div className="checkout-container">
+            <div className="checkout">
+              <p className="checkout-title">Sub Total</p>
+              <p className="checkout-price">18,000</p>
+            </div>
+            <div className="checkout">
+              <p className="checkout-title">Delivery</p>
+              <p className="checkout-price">8,000</p>
+            </div>
+            <div className="checkout">
+              <p className="checkout-title">Total</p>
+              <p className="checkout-price">{calcTotalPrice.toLocaleString()}</p>
+            </div>
           </div>
-          <div className="checkout">
-            <p className="checkout-title">Delivery</p>
-            <p className="checkout-price">8,000</p>
-          </div>
-          <div className="checkout">
-            <p className="checkout-title">Total</p>
-            <p className="checkout-price">{calcTotalPrice.toLocaleString()}</p>
-          </div>
-        </div>
+        )}
+
         <button className="w-100 checkout-button" onClick={() => setModalShow(true)}>
           Confirm Order{" "}
         </button>
