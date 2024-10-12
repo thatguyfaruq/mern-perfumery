@@ -1,11 +1,14 @@
-import React from "react";
+import React,{useContext} from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ratingImg from "/src/assets/Star.png";
 import products from "../product.json";
+import CartContext from "../context/CartContext";
 
-const Product = ({ cart, setCart, handleAddToCart }) => {
-  const isItemInCart = (itemId) => cart.some((product) => product.id === itemId);
+const Product = () => {
+ const {handleAddToCart,cart} = useContext(CartContext)
+   const isItemInCart = (itemId)=> cart.some((product)=>product.id === itemId)
+ 
   return (
     <>
       <main className="d-flex flex-wrap justify-content-between gap-4 pt-2">
