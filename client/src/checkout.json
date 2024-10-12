@@ -1,8 +1,24 @@
 [
   {
     "id": 1,
-    "image": "https://res.cloudinary.com/dov4vedye/image/upload/v1727625287/polo_bdnlh4.png",
-    "title": "Ralph Lauren Perfume",
+    "image": "https://res.cloudinary.com/dov4vedye/image/upload/v1728125261/oud-frank-small_bqmmwy.png",
+    "title": "Franck Oliver Oud Touch",
+    "quantity": "1x",
+    "price": "N6000",
+    "amount": "N6000"
+  },
+     {
+    "id": 1,
+    "image": "https://res.cloudinary.com/dov4vedye/image/upload/v1728125261/oud-frank-small_bqmmwy.png",
+    "title": "Franck Oliver Oud Touch",
+    "quantity": "1x",
+    "price": "N6000",
+    "amount": "N6000"
+  },
+    {
+    "id": 1,
+    "image": "https://res.cloudinary.com/dov4vedye/image/upload/v1728125261/oud-frank-small_bqmmwy.png",
+    "title": "Franck Oliver Oud Touch",
     "quantity": "1x",
     "price": "N6000",
     "amount": "N6000"

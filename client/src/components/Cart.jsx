@@ -1,11 +1,14 @@
-import React,{useContext} from "react";
-import { useState } from "react";
+import React,{useState, useContext} from "react";
 import carts from "../cart.json";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import ConfirmOrder  from "./ConfirmOrder";
 import CartContext from "../context/CartContext";
 
 
+
 const Cart = () => {
+  const [modalShow, setModalShow] = useState(false);
   const {cart, removeItem, calcTotalPrice, handleIncreaseQuantity, handleDecreaseQuantity} = useContext(CartContext)
   return (
     <>
@@ -33,16 +36,24 @@ const Cart = () => {
               <div className="cart-2 d-flex flex-column m-0 p-0">
                 <h4 className="cart-title">{title}</h4>
                 <div className="d-flex gap-2 align-items-center">
-                  <button className="subtract-cart" onClick={() =>handleDecreaseQuantity(id)} >-</button>
+                  <button
+                    className="subtract-cart"
+                    onClick={() => handleDecreaseQuantity(id)}>
+                    -
+                  </button>
                   <p className="pt-3 cart-number"> {cartItem.quantity} </p>
-                  <button className="add-cart text-center" onClick={() =>handleIncreaseQuantity(id)}>+</button>
+                  <button
+                    className="add-cart text-center"
+                    onClick={() => handleIncreaseQuantity(id)}>
+                    +
+                  </button>
                 </div>
                 <div className="d-flex justify-content-between m-0">
                   <p className="cart-price">N{price}</p>
                   <button className="remove-cart" onClick={() => removeItem(id)}>
                     remove
                   </button>
-                </div> 
+                </div>
               </div>
             </div>
           );
@@ -66,9 +77,10 @@ const Cart = () => {
           </div>
         )}
 
-        {/* <button className="w-100 checkout-button" onClick={() => setModalShow(true)}>
+        <button className="w-100 checkout-button" onClick={() => setModalShow(true)}>
           Confirm Order{" "}
-        </button> */}
+        </button>
+        <ConfirmOrder show={modalShow} onHide = {() => setModalShow(false)} />
       </main>
     </>
   );
