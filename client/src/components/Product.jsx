@@ -12,7 +12,7 @@ const Product = () => {
     try {
       setIsLoading(true);
       const req = await fetch(
-        "https://mern-perfumery-dlex.onrender.com//api/product/products"
+        "https://mern-perfumery-dlex.onrender.com/api/product/products"
       );
       const res = await req.json();
       console.log(res.product);
