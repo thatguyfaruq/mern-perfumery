@@ -16,7 +16,7 @@ export const CartProvider = ({ children }) => {
   const verified = async () => {
     try {
       const req = await fetch(
-        "https://mern-perfumery-dlex.onrender.com//api/auth/verify",
+        "https://mern-perfumery-dlex.onrender.com/api/auth/verify",
         {
           headers: {
             Authorization: `Bearer ${token}`,
