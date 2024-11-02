@@ -11,7 +11,9 @@ const Product = () => {
   const getData = async()=>{
     try {
       setIsLoading(true);
-      const req = await fetch("http://localhost:3000/api/product/products");
+      const req = await fetch(
+        "https://mern-perfumery-dlex.onrender.com//api/product/products"
+      );
       const res = await req.json();
       console.log(res.product);
       setData(res.product);

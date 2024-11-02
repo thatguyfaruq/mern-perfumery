@@ -15,11 +15,14 @@ export const CartProvider = ({ children }) => {
   }
   const verified = async () => {
     try {
-      const req = await fetch("http://localhost:3000/api/auth/verify", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const req = await fetch(
+        "https://mern-perfumery-dlex.onrender.com//api/auth/verify",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const res = await req.json();
       if (res.success) {
         setUser(res.user);
@@ -78,14 +81,11 @@ export const CartProvider = ({ children }) => {
     setCart(updatedCart);
   };
 
-  useEffect(() => {
-    if (token) {
-      verified()
-    };
-  }, [token]);
-
+ 
+  
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
+    verified()
   }, [cart]);
   return (
     <CartContext.Provider

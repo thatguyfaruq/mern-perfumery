@@ -27,13 +27,16 @@ const {
     setIsClicked(true)
 
     try {
-      const req = await fetch("http://localhost:3000/api/auth/signup",{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify(data)
-      });
+      const req = await fetch(
+        "https://mern-perfumery-dlex.onrender.com/api/auth/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       const res = await req.json();
 console.log(res);
 if(!res.success){

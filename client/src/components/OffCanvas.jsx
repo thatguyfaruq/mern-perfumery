@@ -12,13 +12,13 @@ import arrowDown from '../assets/arrow-down.svg';
 const OffCanvas = ({ name, ...props }) => {
   const [show, setShow] = useState(false);
   const [isReveal, setIsReveal] = useState(false);
-  const { user } = useContext(CartContext);
-  const fullName = localStorage.getItem("fullname")
-
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const token = localStorage.getItem("perf-token");
+  const fullName = localStorage.getItem("fullname");
+
+  const { user } = useContext(CartContext);
 
   function toggleIsRevealed() {
     isReveal ? setIsReveal(false) : setIsReveal(true);
@@ -82,4 +82,4 @@ const OffCanvas = ({ name, ...props }) => {
   );
 };
 
-export default OffCanvas
+export default OffCanvas;
