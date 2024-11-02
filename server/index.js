@@ -7,8 +7,8 @@ import authRoute from "./routes/authRoute.js";
 import orderRoute from "./routes/orderRoute.js";
 import cors from "cors"
 
-const app = express();
 const port = process.env.PORT || 3000;
+const app = express();
 dotenv.config();
 app.use(cors());
 app.use(express.json())
