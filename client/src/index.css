@@ -80,7 +80,7 @@ nav h1 {
   background-color: #ffffff;
   width: 100%;
   max-width: 642px;
-  height: 500px;
+  min-height: 500px;
   padding: 2rem 3rem;
   border-radius: 15px;
   /* margin-top: 123px;

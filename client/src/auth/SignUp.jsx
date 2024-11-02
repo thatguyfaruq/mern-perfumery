@@ -1,28 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import NavLogo from "../assets/perfumery-logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FrameImg from "../assets/frame.png";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpSchema } from "../utils/ValidationSchema";
-
+import toast from "react-hot-toast";
 
 const SignUp = () => {
+  const [isClicked,setIsClicked] = useState(false);
+  const navigate = useNavigate();
   const navigateToGoogle = () => {
     window.open("https://www.google.com", "_blank");
   };
 const {
   register,
   handleSubmit,
-  formState: { errors },
+  formState: { errors, isSubmitting },
 } = useForm({
   resolver: yupResolver(signUpSchema),
 });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data)
+    setIsClicked(true)
 
+    try {
+      const req = await fetch("http://localhost:3000/api/auth/signup",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(data)
+      });
+      const res = await req.json();
+console.log(res);
+if(!res.success){
+  toast.error(res.errMsg)
+}
 
+if(res.success){
+  toast.success(res.message)
+  navigate("/auth/login");
+}
+
+    } catch (error) {
+console.log(error.message);
+
+    } finally{
+      setIsClicked(false)
+    }
+  };
+  const btnTxt = isClicked ? "loading..." : "Sign Up"
   return (
     <main className="sign-up-container">
       <nav>
@@ -44,11 +74,16 @@ const {
                   placeholder="Enter Name"
                   {...register("firstName")}
                 />
-                <p>{errors.firstName?.message}</p>
+                <span className="text-danger">{errors.firstName?.message}</span>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control type="Last name" placeholder="Enter Name" />
+                <Form.Control
+                  type="Last name"
+                  placeholder="Enter Name"
+                  {...register("lastName")}
+                />
+                <span className="text-danger">{errors.lastName?.message}</span>
               </Form.Group>
             </div>
             <div>
@@ -59,7 +94,7 @@ const {
                   placeholder="Enter email"
                   {...register("email")}
                 />
-                <p>{errors.email?.message}</p>
+                <span className="text-danger">{errors.email?.message}</span>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
@@ -68,16 +103,16 @@ const {
                   placeholder="Password"
                   {...register("password")}
                 />
-                <p>{errors.password?.message}</p>
+                <span className="text-danger">{errors.password?.message}</span>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
                   type="password"
                   placeholder="Confirm your Password"
-                  {...register("confirmPwd")}
+                  {...register("confirmPassword")}
                 />
-                <span className="text-danger">{errors.confirmPwd?.message}</span>
+                <span className="text-danger">{errors.confirmPassword?.message}</span>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check
@@ -86,9 +121,10 @@ const {
                 />
               </Form.Group>
             </div>
-            <button className="sign-up w-100" variant=" ">
-              Sign Up
+            <button className="sign-up w-100" variant=" " disabled={isSubmitting}> 
+              {btnTxt}
             </button>
+
             <div className="d-flex justify-content-center">
               <img src={FrameImg} alt="frame-img" />
             </div>

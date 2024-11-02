@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavLogo from "../assets/perfumery-logo.svg";
 import FrameImg from "../assets/frame.png";
 import Form from "react-bootstrap/Form";
@@ -7,10 +7,14 @@ import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signInSchema } from "../utils/ValidationSchema";
+import toast from "react-hot-toast";
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Login = () => {
+  const [isClicked, setIsClicked] = useState(false);
+  const navigate = useNavigate()
   const navigateToGoogle = () => {
     window.open("https://www.google.com", "_blank");
   };
@@ -18,11 +22,42 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(signInSchema),
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async(data) => {
+    setIsClicked(true)
+    try {
+      const req = await fetch("http://localhost:3000/api/auth/signin",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(data)
+      });
+      const res = await req.json();
+      console.log(res);
+      if(!res.success){
+        toast.error(res.errMsg);
+      }
+
+      if(res.success){
+        toast.success(res.message);
+        localStorage.setItem("perf-token",res.user.token)
+        localStorage.setItem("fullname", `${res.user.firstName} ${res.user.firstName}`);
+        navigate("/")
+      }
+      
+    } catch (error) {
+
+    }finally{
+      setIsClicked(false)
+    }
+     
+  };
+    const btnTxt = isClicked ? "loading..." : "Sign In"
+   
 
   return (
     <>
@@ -63,7 +98,7 @@ const Login = () => {
                 </Form.Group>
                 <p className="forgot">Forgot Password</p>
               </div>
-              <button className="sign-in w-100 gap-4" variant="">
+              <button className="sign-in w-100 gap-4" variant="" disabled={isSubmitting}>
                 Sign In
               </button>
               <div className="d-flex justify-content-center gap-3">
